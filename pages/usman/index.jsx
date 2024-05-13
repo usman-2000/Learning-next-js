@@ -1,12 +1,21 @@
 import { Button } from "@/components/button/Button";
+import { useState } from "react";
 
 export default function Usman(props) {
+    const { res } = props
+    // const [todos, setTodos] = useState([])
+    if (!res.length) {
+        return <h1>Loading</h1>
+    }
+
+    const todos = res && res.map((d) => {
+        return <p>{d.title}</p>
+    })
+
     return (
         <div>
             {
-                props.res?.map((d) => {
-                    return <h1>Title : {d.title}</h1>
-                })
+                todos
             }
             <Button >Click Btn</Button>
         </div>
@@ -15,8 +24,8 @@ export default function Usman(props) {
 
 export const getStaticProps = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/todos/")
-    console.log(response)
     const res = await response.json()
+    console.log(res, "res")
 
     return {
         props: {
