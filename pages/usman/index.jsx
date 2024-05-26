@@ -1,4 +1,5 @@
 import { Button } from "@/components/button/Button";
+import { notFound } from "next/navigation";
 import { useState } from "react";
 
 export default function Usman(props) {
@@ -30,6 +31,8 @@ export const getStaticProps = async () => {
     return {
         props: {
             res: res
-        }
+        },
+        notFound: true,
+        revalidate: 10
     }
 }
