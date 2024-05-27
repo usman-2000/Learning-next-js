@@ -8,7 +8,7 @@ export default function ReturnAFunction({ id }) {
     const [newId, setNewId] = useState()
     return (
         <div>{
-            !id ? "No ID   found" : "You can see my page here"
+            !id ? "No ID   found" : "You can render a component here"
         }</div>
     )
 }
